@@ -1,0 +1,23 @@
+name: Technitium DNS Server
+version: "15.6.2-1.3.4"
+slug: technitium_dns
+description: Technitium DNS Server with the Technitium Console admin interface
+url: https://github.com/byGarcia/technitium-console
+arch:
+  - amd64
+  - aarch64
+  - armv7
+startup: system
+boot: auto
+# Host networking, as Technitium's compose file suggests for DHCP; also gives DNS port 53.
+host_network: true
+ports:
+  53/udp: 53
+  53/tcp: 53
+  5380/tcp: 5380
+ports_description:
+  53/udp: DNS
+  53/tcp: DNS
+  5380/tcp: Web console
+webui: http://[HOST]:[PORT:5380]/
+watchdog: tcp://[HOST]:[PORT:5380]
